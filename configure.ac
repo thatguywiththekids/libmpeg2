@@ -11,7 +11,7 @@ AC_CONFIG_FILES([Makefile include/Makefile test/Makefile
 AC_CONFIG_HEADERS([include/config.h])
 AC_CANONICAL_HOST
 
-AM_INIT_AUTOMAKE([1.5 -Wall foreign])
+AM_INIT_AUTOMAKE([-Wall foreign])
 AM_MAINTAINER_MODE
 
 dnl Checks for compiler

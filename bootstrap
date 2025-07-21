@@ -111,7 +111,11 @@ if test "$libtool" = "yes"; then
   fi
 fi
 
-aclocal${amvers} ${aclocalflags}
+if test -e "aclocal-${amvers}"; then
+  aclocal-${amvers} ${aclocalflags}
+else
+  aclocal ${aclocalflags}
+fi
 autoconf${acvers}
 if test "$header" = "yes"; then
   autoheader${acvers}
@@ -119,7 +123,11 @@ fi
 if test "$makefile" = "yes"; then
   #add --include-deps if you want to bootstrap with any other compiler than gcc
   #automake${amvers} --add-missing --copy --include-deps
-  automake${amvers} --foreign --add-missing --copy
+  if test -e "automake-${amvers}"; then
+    automake-${amvers} --foreign --add-missing --copy
+  else
+    automake --foreign --add-missing --copy
+  fi
 fi
 
 # Remove cruft that we no longer want
